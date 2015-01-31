@@ -1,0 +1,31 @@
+{
+  "name": "frontend-nanodegree-mobile-portfolio",
+  "version": "0.0.1",
+  "description": "Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "compression": "~1.3.0",
+    "express": "~4.11.1",
+    "gulp": "~3.8.10",
+    "gulp-clean": "~0.3.1",
+    "gulp-image-optimization": "~0.1.3",
+    "gulp-minify-css": "~0.4.3",
+    "gulp-uglify": "~1.1.0",
+    "gulp-minify-html": "~0.1.8",
+    "gulp-watch": "~4.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node node_modules/.bin/gulp default"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio.git"
+  },
+  "author": "Rachkoud",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio/issues"
+  },
+  "homepage": "https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio"
+}
