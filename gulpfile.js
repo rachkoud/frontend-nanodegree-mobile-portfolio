@@ -1,11 +1,11 @@
 var gulp = require('gulp'),
-    watch = require('gulp-watch'),
     imageop = require('gulp-image-optimization'),
     clean = require('gulp-clean'),
     uglify = require('gulp-uglify'),
     minifyCSS = require('gulp-minify-css'),
     minifyHtml = require("gulp-minify-html"),
-    express = require('express');
+    express = require('express'),
+    inlinesource = require('gulp-inline-source');;
 
 // app contains the sources and dist has the optimizations
 var bases = {
@@ -17,7 +17,10 @@ var paths = {
     scripts: ['**/*.js'],
     styles: ['**/*.css'],
     html: ['**/*.html'],
-    images: ['**/*.{png,jpg}']
+    images: ['**/*.{png,jpg}'],
+    imagesOptimizedWithJPEGMiniAndImageAlpha: ['allImagesOptimizedWithJPEGMiniAndImageAlpha/**/*.{png,jpg}'],
+    fonts: ['**/*.woff2'],
+    inlineSources: ['index.html']
 };
 
 // Start web server on port 8080
@@ -38,8 +41,15 @@ gulp.task('clean', function() {
     return gulp.src(bases.dist).pipe(clean());
 });
 
+// Copy all other files to dist directly
+gulp.task('copy', ['clean'], function() {
+    // Copy fonts
+    gulp.src(paths.fonts, {cwd: bases.app})
+        .pipe(gulp.dest(bases.dist));
+});
+
 // Uglify scripts
-gulp.task('scripts', ['clean'], function() {
+gulp.task('uglify-scripts', ['clean'], function() {
     gulp.src(paths.scripts, {cwd: bases.app})
         .pipe(uglify())
         .pipe(gulp.dest(bases.dist));
@@ -48,26 +58,39 @@ gulp.task('scripts', ['clean'], function() {
 // Minify styles
 gulp.task('minify-css', ['clean'], function() {
     gulp.src(paths.styles, {cwd: bases.app})
-      .pipe(minifyCSS())
-      .pipe(gulp.dest(bases.dist))
+        .pipe(minifyCSS())
+        .pipe(gulp.dest(bases.dist))
+});
+
+// Inline javascript and css with attribute inline
+gulp.task('inline-js-and-css', ['clean', 'minify-css', 'uglify-scripts'], function () {
+    return gulp.src(paths.inlineSources, {cwd: bases.app})
+        .pipe(inlinesource())
+        .pipe(gulp.dest(bases.dist));
 });
 
 // Minify html
-gulp.task('minify-html', ['clean'], function () {
-    gulp.src(paths.html, {cwd: bases.app})
-    .pipe(minifyHtml())
-    .pipe(gulp.dest(bases.dist));
+gulp.task('minify-html', ['inline-js-and-css'], function () {
+    gulp.src(paths.html, {cwd: bases.dist})
+        .pipe(minifyHtml())
+        .pipe(gulp.dest(bases.dist));
 });
 
 // Optimize images
 gulp.task('images-optimization', ['clean'], function(cb) {
-    gulp.src(paths.images, {cwd: bases.app})
-        .pipe(imageop({
-            optimizationLevel: 5,
-            progressive: true,
-            interlaced: true
-        })).pipe(gulp.dest(bases.dist)).on('end', cb).on('error', cb);
+    // Images optimized with gulp-image-optimization didn't help to remove the image optimization warning from the pageSpeed
+    // gulp.src(paths.images, {cwd: bases.app})
+    //     .pipe(imageop({
+    //         optimizationLevel: 7,
+    //         progressive: true,
+    //         max: 50,
+    //         interlaced: true
+    //     })).pipe(gulp.dest(bases.dist)).on('end', cb).on('error', cb);
+
+    // Copy image optimized by JPEGMini (jpg) and ImageAlpha (png)
+    gulp.src(paths.imagesOptimizedWithJPEGMiniAndImageAlpha, {cwd: bases.app})
+        .pipe(gulp.dest(bases.dist)).on('end', cb).on('error', cb);
 });
 
 // Default Task
-gulp.task('default', ['clean', 'minify-html', 'minify-css', 'scripts', 'images-optimization', 'webserver']);
+gulp.task('default', ['clean', 'copy', 'minify-html', 'minify-css', 'inline-js-and-css', 'uglify-scripts', 'images-optimization', 'webserver']);
