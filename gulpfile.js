@@ -46,38 +46,42 @@ gulp.task('copy', ['clean'], function() {
     // Copy fonts
     gulp.src(paths.fonts, {cwd: bases.app})
         .pipe(gulp.dest(bases.dist));
+
+    // Copy html files
+    return gulp.src(paths.html, {cwd: bases.app})
+        .pipe(gulp.dest(bases.dist));
 });
 
 // Uglify scripts
 gulp.task('uglify-scripts', ['clean'], function() {
-    gulp.src(paths.scripts, {cwd: bases.app})
+    return gulp.src(paths.scripts, {cwd: bases.app})
         .pipe(uglify())
         .pipe(gulp.dest(bases.dist));
 });
 
 // Minify styles
 gulp.task('minify-css', ['clean'], function() {
-    gulp.src(paths.styles, {cwd: bases.app})
+    return gulp.src(paths.styles, {cwd: bases.app})
         .pipe(minifyCSS())
         .pipe(gulp.dest(bases.dist))
 });
 
 // Inline javascript and css with attribute inline
-gulp.task('inline-js-and-css', ['clean', 'minify-css', 'uglify-scripts'], function () {
-    return gulp.src(paths.inlineSources, {cwd: bases.app})
+gulp.task('inline-js-and-css', ['clean', 'copy', 'minify-css', 'uglify-scripts'], function () {
+    return gulp.src(paths.inlineSources, {cwd: bases.dist})
         .pipe(inlinesource())
         .pipe(gulp.dest(bases.dist));
 });
 
 // Minify html
 gulp.task('minify-html', ['inline-js-and-css'], function () {
-    gulp.src(paths.html, {cwd: bases.dist})
+    return gulp.src(paths.html, {cwd: bases.dist})
         .pipe(minifyHtml())
         .pipe(gulp.dest(bases.dist));
 });
 
 // Optimize images
-gulp.task('images-optimization', ['clean'], function(cb) {
+gulp.task('images-optimization', ['clean'], function() {
     // Images optimized with gulp-image-optimization didn't help to remove the image optimization warning from the pageSpeed
     // gulp.src(paths.images, {cwd: bases.app})
     //     .pipe(imageop({
@@ -88,8 +92,8 @@ gulp.task('images-optimization', ['clean'], function(cb) {
     //     })).pipe(gulp.dest(bases.dist)).on('end', cb).on('error', cb);
 
     // Copy image optimized by JPEGMini (jpg) and ImageAlpha (png)
-    gulp.src(paths.imagesOptimizedWithJPEGMiniAndImageAlpha, {cwd: bases.app})
-        .pipe(gulp.dest(bases.dist)).on('end', cb).on('error', cb);
+    return gulp.src(paths.imagesOptimizedWithJPEGMiniAndImageAlpha, {cwd: bases.app})
+        .pipe(gulp.dest(bases.dist));
 });
 
 // Default Task
