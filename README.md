@@ -8,16 +8,13 @@ I also optimized the content :
 
 * [See Content optimizations](https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio/wiki/Content-Efficiency)
 
-The branch master contains the original version the online portfolio and [the original directives could be found here](https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio/wiki/Website-Performance-Optimization-portfolio-project)
-
 This is the performances measured :
 
 * [See Performances Measured](https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio/wiki/Performances-measures)
 
 ### Organization 
 
-The branch optimization contains all optimizations, the debug version is in the app directory and the optimized version in dist. 
-
+The branch master contains the original version of the online portfolio and [the original directives could be found here](https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio/wiki/Website-Performance-Optimization-portfolio-project). The branch optimization contains all optimizations, the debug version is in the app directory and the optimized version in dist. 
 **Setup**
 
 Install the node modules :
