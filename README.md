@@ -8,9 +8,13 @@ I also optimized the content :
 
 * [See Content optimizations](https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio/wiki/Content-Efficiency)
 
-This is the performances measured :
+This is the performances measured with PageSpeed :
 
 * [See Performances Measured](https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio/wiki/Performances-measures)
+
+And finally this the optimzations made in pizza.html
+
+* [See Framerate optimizations](https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio/wiki/Framerate)
 
 ### Organization 
 
