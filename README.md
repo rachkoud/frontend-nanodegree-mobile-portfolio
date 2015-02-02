@@ -33,4 +33,45 @@ Build and start :
 npm start
 ```
 
+### Useful links
+
+##### Gulp Optimization
+http://www.justinmccandless.com/blog/A+Tutorial+for+Getting+Started+with+Gulp
+https://www.npmjs.com/package/gulp-image-optimization
+https://github.com/jonathanepollack/gulp-minify-css
+https://www.npmjs.com/package/imagemin-jpegoptim
+https://github.com/fmal/gulp-inline-source
+https://www.npmjs.com/package/gulp-inline-source
+https://github.com/popeindustries/inline-source
+http://stefanimhoff.de/2014/gulp-tutorial-12-optimize-css-javascript-images-and-html/
+https://medium.com/@1000ch/we-should-optimize-images-8435760e0ec9
+http://julienrenaux.fr/2014/05/25/introduction-to-gulp-js-with-practical-examples/
+http://andy-carter.com/blog/a-beginners-guide-to-the-task-runner-gulp
+http://markgoodyear.com/2014/01/getting-started-with-gulp/
+
+##### Node
+https://www.npmjs.com/package/express
+http://inspiredjw.com/do-not-forget-to-use-gzip-for-express/
+
+##### Fonts
+https://docs.google.com/presentation/d/10QJ_GABjwzfwUb5DZ3DULdv82k74QdPArkovYJZ-glc/present?slide=id.g3872ee805_0240
+http://dev.w3.org/csswg/css-font-loading/
+http://drewsymo.com/2013/11/simple-base64-encode-decode-on-mac-osx-linux-with-openssl/
+http://www.fontsquirrel.com/tools/webfont-generator
+http://sosweetcreative.com/2613/font-face-and-base64-data-uri
+https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization?hl=en#optimizing-loading-and-rendering
+https://www.google.com/fonts
+
+##### Heroku
+https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction
+https://devcenter.heroku.com/articles/git
+
+##### PageSpeed
+https://developers.google.com/speed/docs/insights/PrioritizeVisibleContent#SpecifyImageDimensions
+
+##### Images optimization
+https://kraken.io/
+http://www.jpegmini.com/app
+http://pngmini.com/
+
 
