@@ -1,10 +1,11 @@
-## Website Performance Optimization portfolio project
+Website Performance Optimization portfolio project
+==================================================
 
 In this challenge, I optimized this online portfolio for speed. In particular, I optimized the critical rendering path and make the dist/index.html to render as quickly as possible by applying the techniques from the [Critical Rendering Path course](https://www.udacity.com/course/ud884) course :
 
 * [See the Critical Rendering Path optimizations](https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio/wiki/Critical-Rendering-Path)
 
-I also optimized the content : 
+I also optimized the content :
 
 * [See Content optimizations](https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio/wiki/Content-Efficiency)
 
@@ -16,10 +17,13 @@ And finally this the optimzations made in pizza.html
 
 * [See Framerate optimizations](https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio/wiki/Framerate)
 
-### Organization 
+### Organization
 
-The branch master contains the original version of the online portfolio and [the original directives could be found here](https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio/wiki/Website-Performance-Optimization-portfolio-project). The branch optimization contains all optimizations, the debug version is in the app directory and the optimized version in dist. 
-**Setup**
+The branch master contains the original version of the online portfolio and [the original directives could be found here](https://github.com/rachkoud/frontend-nanodegree-mobile-portfolio/wiki/Website-Performance-Optimization-portfolio-project). The branch optimization contains all optimizations, the debug version is in the app directory and the optimized version in dist.
+
+# Quickstart
+
+### Install
 
 Install the node modules :
 
@@ -27,7 +31,7 @@ Install the node modules :
 node install
 ```
 
-Build and start : 
+Build and start :
 
 ```bash
 npm start
@@ -74,4 +78,9 @@ https://kraken.io/
 http://www.jpegmini.com/app
 http://pngmini.com/
 
+### License
+
+`Buggy Frogger` is a public domain work, dedicated using
+[CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Feel free to do
+whatever you want with it.
 
